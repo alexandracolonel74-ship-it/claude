@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Living Room Redesign Proposal</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f5f0eb;
+      --warm-white: #faf8f5;
+      --sand: #c9b99a;
+      --dark-wood: #5c3d2e;
+      --charcoal: #2c2c2c;
+      --text: #3a3a3a;
+      --light-text: #6b6b6b;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background-color: var(--warm-white);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background-color: var(--charcoal);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      font-weight: normal;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1rem;
+      color: var(--sand);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.85rem;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 4rem 0;
+      border-bottom: 1px solid #e8e0d8;
+    }
+
+    section:last-child {
+      border-bottom: none;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: normal;
+      color: var(--dark-wood);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--sand);
+      display: inline-block;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--charcoal);
+      margin: 1.5rem 0 0.5rem;
+      font-family: 'Arial', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.85rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .intro {
+      background-color: var(--cream);
+      padding: 4rem 0;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .tag {
+      display: inline-block;
+      background-color: var(--dark-wood);
+      color: white;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+      margin-right: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .tag.neutral { background-color: var(--sand); color: var(--charcoal); }
+    .tag.green   { background-color: #6a8c69; }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #e8e0d8;
+      border-radius: 4px;
+      padding: 1.5rem;
+    }
+
+    .card .icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card h4 {
+      font-size: 1rem;
+      color: var(--dark-wood);
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--light-text);
+      margin: 0;
+    }
+
+    .palette {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .swatch {
+      width: 80px;
+      text-align: center;
+    }
+
+    .swatch-color {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 1px solid #ddd;
+      margin-bottom: 0.5rem;
+    }
+
+    .swatch span {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.7rem;
+      color: var(--light-text);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.9rem;
+    }
+
+    th {
+      background-color: var(--charcoal);
+      color: white;
+      text-align: left;
+      padding: 0.75rem 1rem;
+      font-weight: normal;
+      letter-spacing: 0.05em;
+    }
+
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #e8e0d8;
+      color: var(--text);
+    }
+
+    tr:nth-child(even) td {
+      background-color: var(--cream);
+    }
+
+    td:last-child {
+      font-weight: bold;
+      color: var(--dark-wood);
+    }
+
+    .total-row td {
+      background-color: var(--dark-wood) !important;
+      color: white;
+      font-weight: bold;
+    }
+
+    .timeline {
+      margin-top: 1.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+      border-left: 3px solid var(--sand);
+    }
+
+    .timeline-item {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.85rem;
+      top: 0.35rem;
+      width: 12px;
+      height: 12px;
+      background: var(--dark-wood);
+      border-radius: 50%;
+    }
+
+    .timeline-item .week {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--sand);
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-item h4 {
+      font-size: 1rem;
+      color: var(--charcoal);
+      margin-bottom: 0.3rem;
+    }
+
+    .timeline-item p {
+      font-size: 0.88rem;
+      color: var(--light-text);
+      margin: 0;
+    }
+
+    footer {
+      background-color: var(--charcoal);
+      color: #aaa;
+      text-align: center;
+      padding: 2rem;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 640px) {
+      header h1 { font-size: 1.6rem; }
+      .intro-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Living Room Redesign Proposal</h1>
+  <p>Coastal Organic &mdash; Refined Warmth Concept</p>
+</header>
+
+<!-- Overview -->
+<section class="intro">
+  <div class="container">
+    <div class="intro-grid">
+      <div>
+        <h2>Overview</h2>
+        <p>
+          This proposal builds on the room's existing strengths — its generous proportions,
+          exposed dark-timber ceiling beams, and open connection to the dining area — and
+          evolves the space toward a warmer, more intentional "coastal organic" aesthetic.
+        </p>
+        <p>
+          The goal is to add tactile richness and curated character while preserving the
+          airy, light-filled quality that defines the room today.
+        </p>
+        <div style="margin-top:1.2rem">
+          <span class="tag">Coastal Organic</span>
+          <span class="tag neutral">Neutral Palette</span>
+          <span class="tag green">Biophilic</span>
+          <span class="tag neutral">Open Plan</span>
+        </div>
+      </div>
+      <div>
+        <h3>What's Working</h3>
+        <p>The exposed timber beams are a stand-out feature and anchor the entire scheme.</p>
+        <p>The limestone-effect floor tiles unify the living and dining zones beautifully.</p>
+        <p>The open-plan flow to the kitchen and dining area creates a sociable, relaxed atmosphere.</p>
+        <p>The existing black-and-white portrait gallery adds cultural depth and personality.</p>
+        <h3>Opportunities</h3>
+        <p>Seating arrangement can be tightened for better conversation flow.</p>
+        <p>Layering more texture — linen, aged leather, ceramic — will add warmth.</p>
+        <p>Lighting needs a cohesive strategy; the existing floor lamp feels isolated.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Colour Palette -->
+<section>
+  <div class="container">
+    <h2>Colour Palette</h2>
+    <p>A tightly edited palette of warm neutrals grounded by the existing dark-wood tones of the ceiling beams and the graphite fireplace.</p>
+    <div class="palette">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#faf8f5;"></div>
+        <span>Chalk White</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#ede5d8;"></div>
+        <span>Warm Linen</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#c9b99a;"></div>
+        <span>Desert Sand</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#a07850;"></div>
+        <span>Warm Oak</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#5c3d2e;"></div>
+        <span>Dark Cedar</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2c2c2c;"></div>
+        <span>Charcoal</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#6a8c69;"></div>
+        <span>Sage Green</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Key Changes -->
+<section style="background:#f9f5f0;">
+  <div class="container">
+    <h2>Key Design Changes</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="icon">&#x1F6CB;</div>
+        <h4>Seating Reconfiguration</h4>
+        <p>Rotate the main sofa 15° to face the fireplace, creating a true hearth focal point. Add a pair of low linen armchairs opposite to encourage conversation rather than a TV-forward layout.</p>
+      </div>
+      <div class="card">
+        <div class="icon">&#x1F4A1;</div>
+        <h4>Layered Lighting</h4>
+        <p>Introduce three pendant lights above the coffee table area using woven rattan shades echoing the existing floor pendant. Add dimmable wall sconces flanking the gallery wall.</p>
+      </div>
+      <div class="card">
+        <div class="icon">&#x1FAB4;</div>
+        <h4>Biophilic Layering</h4>
+        <p>Expand the plant collection with a large fiddle-leaf fig in the corner near the French doors. Add a trailing pothos shelf above the gallery. Retain and celebrate the existing Ficus.</p>
+      </div>
+      <div class="card">
+        <div class="icon">&#x1F9F6;</div>
+        <h4>Textile Refresh</h4>
+        <p>Swap current throw pillows for a mix of Belgian linen, bouclé, and hand-woven cotton in the palette above. Add a second, smaller kilim rug to define the reading corner.</p>
+      </div>
+      <div class="card">
+        <div class="icon">&#x1FAB5;</div>
+        <h4>Coffee Table Styling</h4>
+        <p>Keep the existing reclaimed-wood table — it's a hero piece. Style it with a cluster of varied-height ceramic vessels, a stack of art books, and a single trailing succulent.</p>
+      </div>
+      <div class="card">
+        <div class="icon">&#x1F5BC;</div>
+        <h4>Gallery Wall Extension</h4>
+        <p>Extend the existing 4-portrait row into a floor-to-ceiling asymmetric salon hang, mixing the black-and-white portraits with a few smaller abstract pieces in complementary warm tones.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Budget -->
+<section>
+  <div class="container">
+    <h2>Estimated Budget</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Detail</th>
+          <th>Est. Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Linen armchair pair</td>
+          <td>2 × slip-covered low-profile armchairs</td>
+          <td>$1,800</td>
+        </tr>
+        <tr>
+          <td>Pendant lighting × 3</td>
+          <td>Woven rattan pendants, dimmable</td>
+          <td>$680</td>
+        </tr>
+        <tr>
+          <td>Wall sconces × 2</td>
+          <td>Aged brass arm sconces</td>
+          <td>$420</td>
+        </tr>
+        <tr>
+          <td>Textiles (pillows, throws)</td>
+          <td>Linen, bouclé, hand-woven cotton</td>
+          <td>$550</td>
+        </tr>
+        <tr>
+          <td>Secondary kilim rug</td>
+          <td>180 × 120 cm, vintage-style</td>
+          <td>$390</td>
+        </tr>
+        <tr>
+          <td>Plants &amp; planters</td>
+          <td>Fiddle-leaf, pothos, ceramics</td>
+          <td>$320</td>
+        </tr>
+        <tr>
+          <td>Gallery wall additions</td>
+          <td>Framing, prints, hanging hardware</td>
+          <td>$480</td>
+        </tr>
+        <tr>
+          <td>Styling accessories</td>
+          <td>Vessels, books, objects</td>
+          <td>$260</td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="2">Total Estimate</td>
+          <td>$4,900</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section style="background:#f9f5f0;">
+  <div class="container">
+    <h2>Implementation Timeline</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="week">Week 1</div>
+        <h4>Source &amp; Order</h4>
+        <p>Finalise armchair selection, order pendant lights and sconces. Source kilim rug and textiles.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="week">Week 2</div>
+        <h4>Electrical &amp; Lighting</h4>
+        <p>Electrician installs ceiling roses for pendants and wires wall sconces. Patch and paint as needed.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="week">Week 3</div>
+        <h4>Furniture &amp; Layout</h4>
+        <p>Armchairs delivered and placed. Seating reconfigured around fireplace. Rugs laid.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="week">Week 4</div>
+        <h4>Styling &amp; Planting</h4>
+        <p>Gallery wall extended. Plants installed. Coffee table and shelves styled. Final textile layering.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Living Room Redesign &mdash; Coastal Organic Concept &mdash; 2026</p>
+</footer>
+
+</body>
+</html>
