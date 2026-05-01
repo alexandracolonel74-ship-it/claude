@@ -16,12 +16,33 @@ The system follows a structured seven-step pipeline:
 6. **Call MCP Tools** – Execute generation with appropriate model and parameters
 7. **Validate & Post-Process** – Confirm image exists, apply edits if needed, log costs
 
+## Image-In → Image-Out (Edit Flow)
+
+When the user provides an existing image and wants a new image back:
+
+1. Receive `image_path` + editing instruction from the user
+2. Call `gemini_edit_image` MCP tool with the image path and an engineered edit prompt
+3. The tool sends the image + prompt to Gemini and returns a new PNG saved to `~/Documents/nanobanana_generated/`
+4. Show the user the output file path
+
+**MCP call:**
+```
+gemini_edit_image(imagePath="<path>", prompt="<engineered edit instruction>")
+```
+
+**Fallback** (if MCP unavailable):
+```bash
+python3 .claude/skills/banana/scripts/edit.py --image <path> --prompt "<instruction>"
+```
+
+The `GOOGLE_AI_API_KEY` is pre-configured in the project `.mcp.json`. No additional setup required.
+
 ## Key Commands
 
 | Command | Purpose |
 |---------|---------|
-| `/banana generate <idea>` | Create image with full prompt engineering |
-| `/banana edit <path> <instructions>` | Intelligently modify existing images |
+| `/banana generate <idea>` | Create image from text with full prompt engineering |
+| `/banana edit <path> <instructions>` | Image-in → image-out: modify an existing image |
 | `/banana chat` | Multi-turn creative sessions maintaining consistency |
 | `/banana batch <idea> [N]` | Generate N variations with rotated components |
 | `/banana inspire [category]` | Browse prompt databases for creative ideas |
