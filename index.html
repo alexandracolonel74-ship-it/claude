@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Living Room Redesign — Coastal Farmhouse</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #f5f3ef;
+      color: #2c2a27;
+    }
+
+    header {
+      background: #fff;
+      padding: 2rem 4rem;
+      border-bottom: 1px solid #e0ddd7;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: normal;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #5a4a3a;
+    }
+
+    header span {
+      font-size: 0.8rem;
+      color: #9a8a7a;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      position: relative;
+      background: #2c2a27;
+      height: 520px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #d4cfc7 0%, #b8ad9e 40%, #8b7355 100%);
+      opacity: 0.6;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 3rem 4rem;
+      color: #fff;
+    }
+
+    .hero-content .tag {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 2px;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content h2 {
+      font-size: 3rem;
+      font-weight: normal;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+      font-size: 1rem;
+      opacity: 0.85;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      padding: 3rem 4rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .card-swatch {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .card-body {
+      padding: 1.25rem 1.5rem;
+    }
+
+    .card-body h3 {
+      font-size: 1rem;
+      font-weight: normal;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      color: #5a4a3a;
+    }
+
+    .card-body p {
+      font-size: 0.85rem;
+      color: #7a6a5a;
+      line-height: 1.6;
+    }
+
+    .card-body .hex {
+      font-size: 0.7rem;
+      color: #aaa;
+      margin-top: 0.5rem;
+      font-family: monospace;
+    }
+
+    .materials {
+      padding: 2rem 4rem 3rem;
+    }
+
+    .materials h2 {
+      font-size: 1.1rem;
+      font-weight: normal;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #5a4a3a;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #e0ddd7;
+    }
+
+    .material-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .material-item {
+      background: #fff;
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .material-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .material-text h4 {
+      font-size: 0.9rem;
+      font-weight: normal;
+      margin-bottom: 0.25rem;
+      color: #3a2e24;
+    }
+
+    .material-text p {
+      font-size: 0.8rem;
+      color: #9a8a7a;
+      line-height: 1.5;
+    }
+
+    .furniture {
+      padding: 0 4rem 3rem;
+    }
+
+    .furniture h2 {
+      font-size: 1.1rem;
+      font-weight: normal;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #5a4a3a;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #e0ddd7;
+    }
+
+    .furniture-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .furniture-item {
+      background: #fff;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .furniture-thumb {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+
+    .furniture-label {
+      padding: 0.75rem 1rem;
+    }
+
+    .furniture-label h4 {
+      font-size: 0.85rem;
+      font-weight: normal;
+      color: #3a2e24;
+      margin-bottom: 0.2rem;
+    }
+
+    .furniture-label p {
+      font-size: 0.75rem;
+      color: #9a8a7a;
+    }
+
+    footer {
+      background: #2c2a27;
+      color: #9a8a7a;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Living Room Redesign</h1>
+  <span>Coastal Farmhouse — v1</span>
+</header>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="tag">Design Concept</span>
+    <h2>Warm Neutrals<br>& Natural Textures</h2>
+    <p>An open-plan coastal farmhouse living space anchored by exposed timber beams, linen upholstery, and layered natural materials — relaxed luxury at its most liveable.</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <div class="card-swatch" style="background:#f0ede8; color:#8a7a6a;">Off-White Base</div>
+    <div class="card-body">
+      <h3>Walls & Ceiling</h3>
+      <p>Warm white creates an airy backdrop that reflects natural light without feeling clinical.</p>
+      <div class="hex">#F0EDE8</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-swatch" style="background:#c8b89a; color:#fff;">Natural Linen</div>
+    <div class="card-body">
+      <h3>Primary Upholstery</h3>
+      <p>Slipcover-style linen sofas in a bleached sand tone — casual, washable, and timeless.</p>
+      <div class="hex">#C8B89A</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-swatch" style="background:#6b4226; color:#fff;">Timber Beam</div>
+    <div class="card-body">
+      <h3>Exposed Beams & Accents</h3>
+      <p>Dark stained cedar ceiling beams add warmth and structural drama to the vaulted ceiling.</p>
+      <div class="hex">#6B4226</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-swatch" style="background:#b8a882; color:#fff;">Jute</div>
+    <div class="card-body">
+      <h3>Area Rug</h3>
+      <p>Oversized chunky jute rug grounds the seating area and introduces raw natural texture.</p>
+      <div class="hex">#B8A882</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-swatch" style="background:#2a2a2a; color:#fff;">Matte Black</div>
+    <div class="card-body">
+      <h3>Wood Stove & Column</h3>
+      <p>Cast iron wood-burning stove and structural column provide a bold industrial counterpoint.</p>
+      <div class="hex">#2A2A2A</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-swatch" style="background:#3d5a3e; color:#fff;">Botanicals</div>
+    <div class="card-body">
+      <h3>Indoor Plants</h3>
+      <p>Trailing pothos and statement floor plants bring life and humidity to the open-plan space.</p>
+      <div class="hex">#3D5A3E</div>
+    </div>
+  </div>
+</div>
+
+<div class="materials">
+  <h2>Key Materials</h2>
+  <div class="material-list">
+    <div class="material-item">
+      <div class="material-icon" style="background:#d4c9b0;"></div>
+      <div class="material-text">
+        <h4>Limestone / Polished Concrete Floor</h4>
+        <p>Large-format pale limestone tiles run throughout the ground floor, unifying living, dining, and kitchen zones.</p>
+      </div>
+    </div>
+    <div class="material-item">
+      <div class="material-icon" style="background:#c8b89a;"></div>
+      <div class="material-text">
+        <h4>Belgian Linen Upholstery</h4>
+        <p>Stone-washed linen slipcovers — relaxed in feel, durable for everyday use, removable for cleaning.</p>
+      </div>
+    </div>
+    <div class="material-item">
+      <div class="material-icon" style="background:#8b6340;"></div>
+      <div class="material-text">
+        <h4>Recycled Timber Coffee Table</h4>
+        <p>Low antique-finish hardwood table with wrought-iron legs — handmade, one of a kind, full of character.</p>
+      </div>
+    </div>
+    <div class="material-item">
+      <div class="material-icon" style="background:#e8e0d0;"></div>
+      <div class="material-text">
+        <h4>Knitted Cotton Ottoman</h4>
+        <p>Chunky round pouf in off-white cotton — doubles as extra seating or a footrest, adds tactile softness.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="furniture">
+  <h2>Furniture Schedule</h2>
+  <div class="furniture-grid">
+    <div class="furniture-item">
+      <div class="furniture-thumb" style="background:#f0ede8;">🛋️</div>
+      <div class="furniture-label">
+        <h4>3-Seat Linen Sofa</h4>
+        <p>Slipcovered, deep seat, feather-down cushions</p>
+      </div>
+    </div>
+    <div class="furniture-item">
+      <div class="furniture-thumb" style="background:#f0ede8;">🪑</div>
+      <div class="furniture-label">
+        <h4>Wing Armchair</h4>
+        <p>Linen, high back, with matching ottoman</p>
+      </div>
+    </div>
+    <div class="furniture-item">
+      <div class="furniture-thumb" style="background:#d4c9b0;">🪵</div>
+      <div class="furniture-label">
+        <h4>Reclaimed Wood Table</h4>
+        <p>Low, 120×60 cm, antique finish</p>
+      </div>
+    </div>
+    <div class="furniture-item">
+      <div class="furniture-thumb" style="background:#f5f3ef;">⭕</div>
+      <div class="furniture-label">
+        <h4>Round Knit Ottoman</h4>
+        <p>Cotton, 60 cm dia., off-white</p>
+      </div>
+    </div>
+    <div class="furniture-item">
+      <div class="furniture-thumb" style="background:#2a2a2a;">🔥</div>
+      <div class="furniture-label">
+        <h4>Cast Iron Wood Stove</h4>
+        <p>Freestanding, matte black, with flue</p>
+      </div>
+    </div>
+    <div class="furniture-item">
+      <div class="furniture-thumb" style="background:#f0ede8;">💡</div>
+      <div class="furniture-label">
+        <h4>Arc Floor Lamp</h4>
+        <p>Brushed steel, linen shade</p>
+      </div>
+    </div>
+    <div class="furniture-item">
+      <div class="furniture-thumb" style="background:#b8a882;">🏺</div>
+      <div class="furniture-label">
+        <h4>Woven Jute Rug</h4>
+        <p>300×250 cm, natural, flatweave</p>
+      </div>
+    </div>
+    <div class="furniture-item">
+      <div class="furniture-thumb" style="background:#3d5a3e;">🪴</div>
+      <div class="furniture-label">
+        <h4>Statement Indoor Plants</h4>
+        <p>Pothos, fig, monstera — mixed heights</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Living Room Redesign — Coastal Farmhouse v1 &nbsp;|&nbsp; 2026
+</footer>
+
+</body>
+</html>
